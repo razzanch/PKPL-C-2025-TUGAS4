@@ -870,7 +870,12 @@ updateHargaFields() {
   }
 },
 
-
+  formatToDecimal(value) {
+    if (!value || value.trim() === "") return null;
+    // Langsung return float/number biar enak divalidasi
+    const num = parseFloat(value.replace(/\./g, '').replace(',', '.')); 
+    return isNaN(num) ? null : num; 
+  },
   async addPaket() {
     // Ambil nilai dari form
     const program = document.getElementById("program").value;
@@ -880,14 +885,6 @@ updateHargaFields() {
     const airline_path = document.getElementById("maskapai").value;
     const include_text = document.getElementById("Include").value;
     const note = document.getElementById("catatan").value;
-
-    // Fungsi untuk format angka ke decimal
-    const formatToDecimal = (value) => {
-      if (!value || value.trim() === "") return null;
-      // Hilangkan semua titik dan ubah ke decimal
-      const numberValue = parseFloat(value.replace(/\./g, '').replace(',', '.'));
-      return isNaN(numberValue) ? null : numberValue.toFixed(2);
-    };
 
     // Format nilai harga ke decimal dengan 2 digit
     const quad = formatToDecimal(document.getElementById("quad").value);
