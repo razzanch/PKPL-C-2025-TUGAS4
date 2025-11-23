@@ -332,7 +332,6 @@ async handleSubmit() {
     return;
   }
 
-  try {
     const selectedProgram = this.programs.find(p => 
       p.name_program === this.formData.program || 
       p.id_program == this.formData.program
@@ -373,33 +372,7 @@ async handleSubmit() {
       this.showNotification(response.data.message || "Upload gagal", false);
     }
 
-  } catch (error) {
-    console.error("Upload Error Details:", {
-      error: error,
-      response: error.response?.data
-    });
-    
-    let errorMessage = "Upload gagal";
-    if (error.response?.data?.message) {
-      errorMessage = error.response.data.message;
-      
-      // Handle duplicate program error specifically
-      if (error.response.data.message.includes("sudah memiliki gallery")) {
-        errorMessage += ` (ID Gallery yang sudah ada: ${error.response.data.data?.existing_gallery_id || 'tidak diketahui'})`;
-        this.clearForm();
-      } else if (error.response.data.data?.error) {
-        errorMessage += ` (${error.response.data.data.error})`;
-        this.clearForm();
-      }
-    } else if (error.message.includes('timeout')) {
-      errorMessage = "Timeout: Server terlalu lama merespon";
-    } else if (error.message.includes('Network Error')) {
-      errorMessage = "Tidak bisa terhubung ke server";
-    }
-
-    this.showNotification(errorMessage, false);
-  }
-},
+  },
 
 clearForm() {
   // Reset form data
