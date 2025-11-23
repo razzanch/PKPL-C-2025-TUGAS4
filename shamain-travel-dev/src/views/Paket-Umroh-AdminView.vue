@@ -788,7 +788,6 @@ async deleteProgramConfirm2() {
 
 
     async addProgram() {
-  try {
     const username = localStorage.getItem("username"); // Ambil username dari localStorage
     if (!username) {
       this.showNotification("User Belum Login!", false);
@@ -815,23 +814,6 @@ async deleteProgramConfirm2() {
     this.form.preprogram = "";
     this.form.periode = "";
     this.fetchPrograms();
-
-  } catch (error) {
-    console.error("Gagal menambahkan program", error);
-
-    // Tangani error dari backend
-    if (error.response) {
-      if (error.response.status === 409) {
-        this.showNotification("Program dengan nama tersebut sudah ada!", false);
-      } else if (error.response.status === 400) {
-        this.showNotification("Semua field wajib diisi!", false);
-      } else {
-        this.showNotification("Terjadi kesalahan saat menambahkan program!", false);
-      }
-    } else {
-      this.showNotification("Tidak dapat terhubung ke server!", false);
-    }
-  }
 },
 
 updateHargaFields() {
