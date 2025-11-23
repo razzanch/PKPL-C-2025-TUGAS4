@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shamain Travel</title>
+    
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Tambahkan CSS Select2 dari CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+* {
+    font-family: 'Montserrat';
+}
+
+/* Mengatur tampilan Select2 agar seragam dengan input lain */
+.select2-container .select2-selection--single {
+    height: 38px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 5px !important;
+    padding-left: 5px !important;
+    font-size: 14px !important;
+    display: flex;
+    align-items: center; /* Menyelaraskan teks secara vertikal */
+}
+
+/* Efek hover dan focus */
+.select2-container--default .select2-selection--single:focus,
+.select2-container--default .select2-selection--single.select2-container--focus {
+    border-color: #202c31 !important;
+    box-shadow: 0 0 5px rgba(32, 44, 49, 0.75) !important;
+}
+
+/* Menyamakan lebar dengan input lainnya */
+.select2-container {
+    max-width: 100% !important;
+
+}
+
+/* Mengubah warna teks placeholder */
+.select2-selection__placeholder {
+    color: grey !important;
+}
+
+/* Dropdown (pilihan) */
+.select2-dropdown {
+    border-radius: 5px !important;
+    font-size: 14px !important;
+}
+
+/* Posisi panah dropdown */
+.select2-container .select2-selection--single .select2-selection__arrow {
+    top: 50% !important;
+    transform: translateY(-50%);
+}
+
+/* Mengubah warna teks dalam dropdown */
+.select2-results__option {
+    color: black !important;
+}
+
+/* Efek hover saat memilih opsi */
+.select2-results__option--highlighted {
+    background-color: #202c31 !important;
+    color: white !important;
+}
+
+/* Mengatur posisi tombol clear (X) ke pinggir kanan */
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    position: absolute;
+    right: 35px !important; /* Menyesuaikan jarak dari kanan */
+    top: 50% !important;
+    transform: translateY(-50%);
+    font-size: 16px !important;
+    color: #999 !important;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+/* Warna tombol clear saat dihover */
+.select2-container--default .select2-selection--single .select2-selection__clear:hover {
+    color: #202c31 !important;
+}
+
+
+    </style>
+
+    
+  <!-- jQuery dan Select2 (Harus sebelum Vue.js) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
